@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,7 +59,9 @@ class MessageActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(text ="@我的" )
                     }
-                    Text(text ="99+",color=Color.White,fontSize=10.sp, modifier = Modifier.background(color = Color.Red,  shape = CircleShape).padding(horizontal = 5.dp, vertical = 1.dp))
+                    Text(text ="99+",color=Color.White,fontSize=10.sp, modifier = Modifier
+                        .background(color = Color.Red, shape = CircleShape)
+                        .padding(horizontal = 5.dp, vertical = 1.dp))
                 }
 
                 Column(horizontalAlignment=Alignment.CenterHorizontally) {
@@ -73,7 +76,9 @@ class MessageActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(text ="点赞" )
                     }
-                    Text(text ="9",color=Color.White,fontSize=10.sp, modifier = Modifier.background(color = Color.Red,  shape = CircleShape).padding(horizontal = 5.dp, vertical = 1.dp))
+                    Text(text ="9",color=Color.White,fontSize=10.sp, modifier = Modifier
+                        .background(color = Color.Red, shape = CircleShape)
+                        .padding(horizontal = 5.dp, vertical = 1.dp))
                 }
 
                 Column(horizontalAlignment=Alignment.CenterHorizontally) {
@@ -107,7 +112,9 @@ class MessageActivity : ComponentActivity() {
                 Box(contentAlignment=Alignment.TopEnd){
                     Image(painter = painterResource(R.mipmap.img),contentDescription = "avatar")
                     if (message.count>0){
-                        Text(text ="${message.count}",color=Color.White,fontSize=10.sp, modifier = Modifier.background(color = Color.Blue,  shape = CircleShape).padding(horizontal = 5.dp, vertical = 1.dp))
+                        Text(text ="${message.count}",color=Color.White,fontSize=10.sp, modifier = Modifier
+                            .background(color = Color.Blue, shape = CircleShape)
+                            .padding(horizontal = 5.dp, vertical = 1.dp))
                     }
                 }
                 Column(
