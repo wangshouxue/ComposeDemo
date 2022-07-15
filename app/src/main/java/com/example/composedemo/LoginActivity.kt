@@ -23,7 +23,8 @@ import com.example.composedemo.ui.theme.ComposeDemoTheme
 class LoginActivity:ComponentActivity() {
     var nameString by mutableStateOf("")
     var pwdString by mutableStateOf("")
-    var isCanClick = MutableLiveData<Boolean>()
+    var isCanClick by mutableStateOf( false)
+    var btColor by mutableStateOf(R.color.purple10)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +59,8 @@ class LoginActivity:ComponentActivity() {
                 value = nameString,
                 onValueChange = { it->
                     nameString = it
-                    isCanClick.value= !TextUtils.isEmpty(nameString)&&!TextUtils.isEmpty(pwdString)
+                    isCanClick=!TextUtils.isEmpty(nameString)&&!TextUtils.isEmpty(pwdString)
+                    btColor=if (isCanClick) R.color.purple_500 else R.color.purple10
                  },
                 modifier = Modifier.padding(start = 10.dp)
             )
@@ -74,7 +76,8 @@ class LoginActivity:ComponentActivity() {
                 value = pwdString,
                 onValueChange = { it->
                     pwdString = it
-                    isCanClick.value= !TextUtils.isEmpty(nameString)&&!TextUtils.isEmpty(pwdString)
+                    isCanClick=!TextUtils.isEmpty(nameString)&&!TextUtils.isEmpty(pwdString)
+                    btColor=if (isCanClick) R.color.purple_500 else R.color.purple10
                 },
                 modifier = Modifier.padding(start = 10.dp)
             )
@@ -82,20 +85,18 @@ class LoginActivity:ComponentActivity() {
     }
     @Composable
     fun btLayout(){
-        OutlinedButton(enabled=isCanClick.value?:false,
+        OutlinedButton(enabled=isCanClick,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 50.dp, bottom = 180.dp)
                 .background(
-                    color = if (isCanClick.value ?: false) colorResource(id = R.color.teal_700) else colorResource(
-                        id = R.color.purple10
-                    ),
+                    color = colorResource(id = btColor),
                     shape = RoundedCornerShape(8.dp)
                 ),
             shape = RoundedCornerShape(8.dp),
             border=null,
             onClick = {
-                if (isCanClick.value?:false){
+                if (isCanClick){
                     Toast.makeText(this,"去登录啦",Toast.LENGTH_SHORT).show()
                 }
         }) {
