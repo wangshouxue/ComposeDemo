@@ -66,3 +66,25 @@ fun ComposeDemoTheme(
         content = content
     )
 }
+
+private val CustomColor = lightColorScheme(
+    primary = Green,
+    secondary = Orange,
+    tertiary = Yellow
+)
+@Composable
+fun MyAppTheme(
+    themeName: String = "blue",
+    content: @Composable() () -> Unit
+) {
+    val colors = when (themeName) {
+        "light" -> CustomColor
+        "dark" ->  DarkColorScheme
+        else -> CustomColor
+    }
+    MaterialTheme(
+        colorScheme = colors,
+        typography = Typography,
+        content = content
+    )
+}

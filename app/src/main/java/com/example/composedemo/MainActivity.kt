@@ -26,16 +26,18 @@ import androidx.compose.ui.unit.dp
 import com.example.composedemo.beans.MainEntity
 import com.example.composedemo.fragmentui.*
 import com.example.composedemo.ui.theme.ComposeDemoTheme
+import com.example.composedemo.ui.theme.MyAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
     var selectMap = mutableStateMapOf<String, Boolean>()
+    //通过by引⽤的对象，在取值和赋值的时候均会调⽤ 代理类的getValue 和 setValue⽅法
     var currentItem by mutableStateOf("home")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeDemoTheme {
+            MyAppTheme {
                 val list= mutableListOf<MainEntity>()
                 list.add(MainEntity("首页","home"))
                 list.add(MainEntity("圈子","circle"))
@@ -83,7 +85,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             },
-            containerColor = Color.Blue
+            containerColor = MaterialTheme.colorScheme.tertiary
         )
         {
             when (currentItem){
