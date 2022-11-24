@@ -90,10 +90,10 @@ class MainActivity : ComponentActivity() {
         {
             when (currentItem){
                 "home"-> homeLayout()
-                "circle"->circleLayout()
-                "forum"-> forumLayout()
-                "msg"->msgLayout()
-                "my"->myLayout()
+                "circle"->circleLayout(this@MainActivity)
+                "forum"-> forumLayout(this@MainActivity)
+                "msg"->msgLayout(this@MainActivity)
+                "my"->myLayout(this@MainActivity)
             }
 //            Box(modifier = Modifier.fillMaxSize()) {
 //                Text(color = Color.Black, modifier = Modifier.align(Alignment.Center), text = "内容")
